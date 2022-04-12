@@ -49,6 +49,9 @@ downTime = 0
 autoSleepTime = 5
 autoSleepCountdown = 30
 
+dirname = os.path.dirname(os.path.abspath(__file__))
+routeCmd = os.path.join(dirname, 'eth1-to-eth0-route.sh')
+
 while True:
 
     oled.clear()
@@ -98,7 +101,7 @@ while True:
         else:
             if subprocess.run(['ping', '-c1', '8.8.8.8'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0:
                 tetherStatus = '---'
-                subprocess.call('/home/pi/eth1-to-eth0-route.sh')
+                subprocess.call(routeCmd)
 
             else:
                 tetherStatus = '.' * (downTime % 4)

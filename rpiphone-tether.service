@@ -1,0 +1,11 @@
+[Unit]
+Description=Autostart iPhone eth1 to eth0 internet sharing
+After=multi-user.target
+
+
+[Service]
+ExecStart=python /home/pi/repos/rpi-iphone-tether/rpiphone-tether-service.py
+
+[Install]
+WantedBy=multi-user.target
+
